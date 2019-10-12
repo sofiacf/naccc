@@ -3,3 +3,10 @@ node_js:
   - 10
 before_install:
   - npm i -g npm@6.9.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: HQsVDNarXExr2ajEmAlrP6OIoKuXnddG6eY7y6wrKzbeYcVke0dBVla5E7vdcU1gdt9whFjGmROEoUVZEn3Cnc2uVHHow2TrvBzZG3P44/RzeK3xE7eEvb9xlEc7NdfYpaSTTy5OKXPJ1myk+SuqzHyMgsj+zny+8pWyfMNXKjkr242vqruJ+TTXkwZElwQJB1fy91E9pg6NWfDzA6Ii9uotXGWLh5nIXaV1pvnl67epnyIS6fHE9AWZcTRJc1tBFkdc59Kf40qM4Y71VIxzEI1EoOJQQWbC457yXZjSIGQHa540D+CJbaDuh5L7M5EOAm7UWVdD0nwOwK1/B5r5jdNOrhmxz5Z7JQZdzGAQ9BmOmFOqHwcghyoh8z9mG3GJmeFt7J+TSBq1PjTZsJQzE38+XHfYfLvH7zgdesVLTg="
+  app: naccc
+  on:
+    repo: sofiacf/naccc
