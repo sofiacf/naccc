@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - 10
+- 10
 before_install:
-  - npm i -g npm@6.9.0
+- npm i -g npm@6.9.0
 deploy:
   provider: heroku
   api_key:
-    secure: HQsVDNarXExr2ajEmAlrP6OIoKuXnddG6eY7y6wrKzbeYcVke0dBVla5E7vdcU1gdt9whFjGmROEoUVZEn3Cnc2uVHHow2TrvBzZG3P44/RzeK3xE7eEvb9xlEc7NdfYpaSTTy5OKXPJ1myk+SuqzHyMgsj+zny+8pWyfMNXKjkr242vqruJ+TTXkwZElwQJB1fy91E9pg6NWfDzA6Ii9uotXGWLh5nIXaV1pvnl67epnyIS6fHE9AWZcTRJc1tBFkdc59Kf40qM4Y71VIxzEI1EoOJQQWbC457yXZjSIGQHa540D+CJbaDuh5L7M5EOAm7UWVdD0nwOwK1/B5r5jdNOrhmxz5Z7JQZdzGAQ9BmOmFOqHwcghyoh8z9mG3GJmeFt7J+TSBq1PjTZsJQzE38+XHfYfLvH7zgdesVLTg="
+    secure: b82uK83+i34Gys1MF/minA3Xe/0bj8UJFd+0ByDdR73HEGuAJhs0h/HW2qr87VaFq04lV5w86L7lGH1xbH4a6RdMmtqg2MmFjUSM2ZAJQEPAy9oivlgBDv7XoeXx+mrpH3/N+BZnZVx6dtGH5jJkFFykv/JES9pIrVzMHNX0sFKxmSN8NfSPvno3yKNHh/KcKn780IeaFNY9mrQosmNQYCxWyeCuDKfQ6T5excEwOBbKA2L4ZO1AjFCXRDFl+Ld6cU+IPpyeUM+w7okK5liajsNgbvvzCqOKNVEXfihyJSfxjYd/J2BitzxGcmk8OC9n6OefDPdWTv3Hik7IdQ2w21D937WZs9Aczgx8ukG9Tpdtqfb/EzSXxcFJcb4oozFpGl7tfnTgTu4Bvo23v2lAr9UnPwHcFO39MIl7Osk5mCpDJqobk+3v/J0nf2QxwZg+U9E9pcRkTAqahjhhdqlyFfL9Zh20wb8FvUVLzuNRws25kslIC7fJ70VqB8OlI6f+pqSJhoyy43IiNuiblmdzJOsChfczxSSp81eCFZ2iuHcTfwHMnO28b0OJbZkZztYrVkqLcPFAQI2tRUQvB7Hke9lhgxhndZJGlJ9OoL4w+ArXDRynV8a6AwHlfDkeBWwlwD7aQ42bEXSW+xpwjH9eOhjKP3d8Q+2u+C8YydmY7bU=
   app: naccc
   on:
     repo: sofiacf/naccc
