@@ -2,6 +2,10 @@
   "name": "naccc",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.3"
+  },
   "dependencies": {
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.12",
