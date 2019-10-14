@@ -1,17 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hey it's the NACCC site.
-        </p>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export const App: React.FC = () => <>
+    <Router>
+        <div className="App">
+            <Switch>
+                <Route path='/.well-known/acme-challenge/QKvmMg1sYEAtf3Z6XHN4ogKnfplHDl67oKgtEzj7IJ0'>
+                    QKvmMg1sYEAtf3Z6XHN4ogKnfplHDl67oKgtEzj7IJ0.BxLnj-VcmdVXujyF0rBFpoJrfDtqnp3FwLjU5YOdag0
+                </Route>
+                <Route path='/'>
+                    <header className="App-header">
+                        <p>Welcome to NACCC 2020 Boston</p>
+                        <p>Please email contact@naccc2020.com with any inquiries</p>
+                        <p>We can't wait to see you Labor Day weekend 2020!</p>
+                    </header>
+                </Route>
+            </Switch>
+        </div>
+    </Router>
+</>
