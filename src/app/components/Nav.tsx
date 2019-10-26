@@ -1,11 +1,14 @@
 import '../style/Nav.css'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
+const getListItem = (el: JSX.Element, key: string): JSX.Element => <li key={ key }> { el } </li>
+const getNavLink = (page: string): JSX.Element => <NavLink to={ `/${ page.toLowerCase() }` }> { page } </NavLink>
+const getNavLinkLi = (page: string): JSX.Element => getListItem(getNavLink(page), page)
 
 const pages: string[] = ['About', 'Sponsors', 'Shop', 'Contact']
-const links: JSX.Element[] = pages.map(page => <li key={ page }>
-    <Link to={ `/${ page.toLowerCase() }` } key={ page }> { page } </Link>
-</li>)
+const shopLink = <a href='https://bbma.bigcartel.com/'> Shop </a>
+const links = [getNavLinkLi(pages[0]), getNavLinkLi(pages[1]), getListItem(shopLink, pages[2]), getNavLinkLi(pages[3])]
 
 export const Nav: React.FC = () => <nav>
     <ul>{ links }</ul>
