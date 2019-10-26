@@ -1,7 +1,6 @@
 import React from 'react'
 
-export const Home: React.FC<any> = () => <div className='home'>
-    <p>Welcome to NACCC 2020 Boston</p>
-    <p>Please direct any inquiries to boston@naccc2020.com</p>
-    <p>We can't wait to see you Labor Day weekend 2020!</p>
+export const Home: React.FC = () => <div className='home'>
+    <h1>NACCC 2020 BOSTON</h1>
+    <h2>LABOR DAY WEEKEND 2020</h2>
 </div>

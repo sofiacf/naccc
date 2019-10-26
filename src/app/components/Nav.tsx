@@ -1,15 +1,16 @@
 import '../style/Nav.css'
+import img from '../images/naccc.png'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const getListItem = (el: JSX.Element, key: string): JSX.Element => <li key={ key }> { el } </li>
-const getNavLink = (page: string): JSX.Element => <NavLink to={ `/${ page.toLowerCase() }` }> { page } </NavLink>
-const getNavLinkLi = (page: string): JSX.Element => getListItem(getNavLink(page), page)
+function getNavLink(page: string): JSX.Element {
+    return <NavLink key={ page } to={ `/${ page.toLowerCase() }` }>{ page }</NavLink>
+}
 
-const pages: string[] = ['About', 'Sponsors', 'Shop', 'Contact']
-const shopLink = <a href='https://bbma.bigcartel.com/'> Shop </a>
-const links = [getNavLinkLi(pages[0]), getNavLinkLi(pages[1]), getListItem(shopLink, pages[2]), getNavLinkLi(pages[3])]
+const shopLink = <a key="Shop" href='https://bbma.bigcartel.com/'>Shop</a>
+const links = [getNavLink('About'), getNavLink('Sponsors'), shopLink, getNavLink('Contact')]
 
-export const Nav: React.FC = () => <nav>
-    <ul>{ links }</ul>
+export const Nav: React.FC = () => <nav title="navigation">
+    <a href="/"><img src={ img } alt='NACCC 2020'/></a>
+    { links }
 </nav>

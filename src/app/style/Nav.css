@@ -1,17 +1,17 @@
 nav {
+    display: block;
     height: 100%;
+    max-width: 20%;
     position: fixed;
     top: 0;
     left: 0;
     background: black;
-    overflow-x: hidden;
     padding-top: 15px;
 }
 
-ul {
-    padding-left: 0;
+nav img {
+    width: 100%;
 }
-
 nav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -21,6 +21,6 @@ nav a {
 }
 
 nav a:hover {
-    color: gold;
+    color: #F4AE1A;
 }
 
