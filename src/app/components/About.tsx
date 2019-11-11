@@ -1,3 +1,3 @@
 import React from 'react'
 
-export const About: React.FC = () => <>About</>
+export const About: React.FC = () => <main>About</main>

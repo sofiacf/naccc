@@ -1,16 +1,13 @@
-import '../style/Nav.css'
-import img from '../images/naccc.png'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 function getNavLink(page: string): JSX.Element {
-    return <NavLink key={ page } to={ `/${ page.toLowerCase() }` }>{ page }</NavLink>
+    return <li><NavLink key={ page } to={ `/${ page.toLowerCase() }` }>{ page }</NavLink></li>
 }
 
-const shopLink = <a key="Shop" href='https://bbma.bigcartel.com/'>Shop</a>
+const shopLink = <li><a key="Shop" href='https://bbma.bigcartel.com/'>Shop</a></li>
 const links = [getNavLink('About'), getNavLink('Sponsors'), shopLink, getNavLink('Contact')]
 
 export const Nav: React.FC = () => <nav title="navigation">
-    <a href="/"><img src={ img } alt='NACCC 2020'/></a>
-    { links }
+    <ul> { links } </ul>
 </nav>
