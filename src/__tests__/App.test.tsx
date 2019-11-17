@@ -3,7 +3,6 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import { App } from '../app/components/App'
 
 const el = document.createElement('div')
-
 const renderApp = () => render(<App/>, el)
 const unmount = () => unmountComponentAtNode(el)
 

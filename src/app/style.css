@@ -1,22 +1,40 @@
 body {
-    padding: 1rem 2rem;
-    margin: 0;
-    background-image: linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.45)
-    ),
-    url('./images/hancock.png');
+    margin: 1rem 2rem;
+    background: linear-gradient(#0c234080, #0c234080), url('./images/hancock.png');
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    color: #f4ae1a;
+    color: #FFB81C;
+}
+
+body * {
+    margin: 0;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+article > p {
+    text-align: justify;
 }
 
 #root {
+    align-items: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "logo logo logo" "nav nav nav" "main main main";
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-areas: "logo" "nav" "header" "main";
+}
+
+header {
+    grid-area: header;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h2 {
+    margin: 0;
 }
 
 .logo {
@@ -28,14 +46,28 @@ body {
 }
 
 nav {
+    align-self: normal;
     grid-area: nav;
     font-weight: bold;
+}
+
+nav li #sponsor:hover {
+    color: #bd3039;
+}
+
+nav li #contact:hover {
+    color: #008853;
+}
+
+nav li #merch:hover {
+    color: #0c2340;
 }
 
 nav ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    margin: 0;
     padding-left: 0;
 }
 
@@ -46,31 +78,44 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    color: #f1f1f1;
-}
-
 main {
+    align-self: normal;
     grid-area: main;
 }
 
+form {
+    text-align: left;
+    background-color: #ffffff50;
+    color: black;
+}
+
+legend {
+    font-weight: bold;
+    display: inline;
+}
+
 .red {
-    color: #bd3039;
+    color: #b34;
 }
 
 .blue {
-    color: #0c2340;
+    color: #024;
+}
+
+.green {
+    color: #085;
 }
 
 @media (min-width: 600px) {
     #root {
         display: grid;
         grid-template-columns: 1fr 2fr 2fr;
-        grid-template-rows: repeat(3, 1fr);
-        grid-template-areas: "logo . ." "nav main main" "nav main main";
+        grid-template-areas: "logo header header" "nav main main" "nav main main";
     }
 
     nav ul {
         display: block;
+        text-align: justify;
+        width: 100%;
     }
 }
