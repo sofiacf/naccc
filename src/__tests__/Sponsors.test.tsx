@@ -18,3 +18,7 @@ it('shows sponsor options', () => {
     const form = el.getElementsByTagName('FORM')[0]
     expect(form.getElementsByTagName('LEGEND')).toHaveLength(5)
 })
+
+it('shows paypal button', () => {
+    expect(el.getElementsByClassName('paypal-button')).toHaveLength(1)
+})

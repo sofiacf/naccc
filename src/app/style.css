@@ -84,11 +84,21 @@ main {
 }
 
 form {
-    text-align: left;
     background-color: #ffffff50;
     color: black;
+    float: left;
+    text-align: left;
+    width: 100%;
 }
 
+fieldset > .paypal-button {
+    float: right;
+}
+
+fieldset > h2 {
+    float: left;
+    vertical-align: middle;
+}
 legend {
     font-weight: bold;
     display: inline;

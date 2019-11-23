@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface CategoryProps {
     name: string;
@@ -19,16 +19,7 @@ interface ItemProps {
     type: string;
     id: string;
     name: string;
-}
-const Item: React.FC<ItemProps> = (props) => {
-    const { id, name, type } = props
-    return <>
-        <label htmlFor={ id }>
-            <input type='checkbox' name={ type } id={ id }
-                   value={ name }/> { name }
-        </label>
-        <br/>
-    </>
+    price: number;
 }
 
 const eventText = 'Support an event and we\'ll feature you as its title sponsor in all schedules, social media, printed materials, and live megaphone shoutouts for the event you make happen.'
@@ -37,50 +28,200 @@ const registrationText = 'We\'ll tell everyone you helped us get one of these it
 const merchText = 'Sponsor one of these items and we\'ll feature your logo on it—prominently!'
 const inKindText = 'For in-kind donations, reach out and get in touch with us'
 
-export const Sponsors: React.FC = () => <>
-    <header><h2>Become a sponsor!</h2></header>
-    <main>
-        <form>
-            <h2>Sponsorship Packages</h2>
-            <p>{ 'We are proud to present an exciting' +
-            ' selection of sponsorship opportunities for your business. The NACCC' +
-            ' has always been a community-based, volunteer-organized event, and' +
-            ' we\'re counting on your support to make event special.' }</p>
-            <Category name='Event' description={ eventText }>
-                <Item type='event' id='friday' name='Friday party'/>
-                <Item type='event' id='saturday' name='Saturday party'/>
-                <Item type='event' id='awards' name='Awards party'/>
-                <Item type='event' id='art' name='Art show'/>
-                <Item type='event' id='lock' name='Quick lock event'/>
-                <Item type='event' id='track' name='Track day'/>
-                <Item type='event' id='wtnb' name='WTNB race'/>
-                <Item type='event' id='alleycat' name='Alleycat'/>
-            </Category>
-            <Category name='Main Race' description={ mainRaceText }>
-                <Item type='main' id='main' name='Main Race'/>
-                <Item type='main' id='checkpoint' name='Checkpoint'/>
-                <Item type='main' id='megaphone' name='Megaphone'/>
-            </Category>
-            <Category name='Registration' description={ registrationText }>
-                <Item type='reg' id='numbers' name='Racer numbers'/>
-                <Item type='reg' id='wristband' name='Wristbands'/>
-                <Item type='reg' id='shirts' name='Shirts'/>
-                <Item type='reg' id='patch' name='Patches'/>
-                <Item type='reg' id='hats' name='Hats'/>
-            </Category>
-            <Category name='Merch' description={ merchText }>
-                <Item type='merch' id='shirts' name='shirts'/>
-                <Item type='merch' id='kit' name='Jersey/kit'/>
-                <Item type='merch' id='stickers' name='Stickers'/>
-            </Category>
-            <Category name='In Kind' description={ inKindText }>
-                <Item type='inkind' id='kit' name='Jersey/kits'/>
-                <Item type='inkind' id='hats' name='Hats'/>
-                <Item type='inkind' id='swag' name='Registration packet swag'/>
-                <Item type='inkind' id='bags' name='Prize bags'/>
-                <Item type='inkind' id='awards' name='Main race awards'/>
-                <Item type='inkind' id='prizes' name='Side event prizes'/>
-            </Category>
-        </form>
-    </main>
-</>
+export const Sponsors: React.FC = () => {
+    const [total, setTotal] = useState<number>(0)
+    const [options, setOptions] = useState<Record<string, number>>({})
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number) => {
+        const newOptions = { ...options }
+        if (event.target.checked) newOptions[name] = amount
+        else delete newOptions[name]
+        setOptions(newOptions)
+    }
+    useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
+    const Item: React.FC<ItemProps> = ({ id, name, price, type }) => <>
+        <label htmlFor={ id }>
+            <input type='checkbox'
+                   name={ type }
+                   id={ id }
+                   checked={ options[name] >= 0 }
+                   onChange={ e => onChange(e, name, price) }
+            /> { name } - ${ price }
+        </label>
+        <br/>
+    </>
+    return <>
+        <header><h2>Become a sponsor!</h2></header>
+        <main>
+            <form>
+                <h2>Sponsorship Packages</h2>
+                <p>{ 'We are proud to present an exciting' +
+                ' selection of sponsorship opportunities for your business. The NACCC' +
+                ' has always been a community-based, volunteer-organized event, and' +
+                ' we\'re counting on your support to make this a NACCC to remember.' }</p>
+                <br/>
+                <Category name='Event' description={ eventText }>
+                    <Item
+                        type='event'
+                        id='friday'
+                        name='Friday party'
+                        price={ 1200 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='saturday'
+                        name='Saturday party'
+                        price={ 1200 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='awards'
+                        name='Awards party'
+                        price={ 1500 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='art'
+                        name='Art show'
+                        price={ 1000 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='lock'
+                        name='Quick lock event'
+                        price={ 1000 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='track'
+                        name='Track day'
+                        price={ 1000 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='wtnb'
+                        name='WTNB race'
+                        price={ 500 }
+                    />
+                    <Item
+                        type={ 'event' }
+                        id='alleycat'
+                        name='Alleycat'
+                        price={ 500 }
+                    />
+                </Category>
+                <Category name='Main Race' description={ mainRaceText }>
+                    <Item
+                        type='main'
+                        id='main'
+                        name='Main race'
+                        price={ 2500 }
+                    />
+                    <Item
+                        type='main'
+                        id='checkpoint'
+                        name='Checkpoint'
+                        price={ 2000 }
+                    />
+                    <Item
+                        type='main'
+                        id='megaphone'
+                        name='Megaphone'
+                        price={ 500 }
+                    />
+                </Category>
+                <Category name='Registration' description={ registrationText }>
+                    <Item
+                        type='reg'
+                        id='numbers'
+                        name='Racer numbers'
+                        price={ 144 }
+                    />
+                    <Item
+                        type='reg'
+                        id='wristband'
+                        name='Wristbands'
+                        price={ 400 }
+                    />
+                    <Item
+                        type='reg'
+                        id='patch'
+                        name='Patches'
+                        price={ 200 }
+                    />
+                    <Item
+                        type='reg'
+                        id='hats'
+                        name='Hats'
+                        price={ 200 }
+                    />
+                </Category>
+                <Category name='Merch' description={ merchText }>
+                    <Item
+                        type='merch'
+                        id='shirts'
+                        name='Shirts'
+                        price={ 100 }
+                    />
+                    <Item
+                        type='merch'
+                        id='kit'
+                        name='Jersey/kit'
+                        price={ 600 }
+                    />
+                </Category>
+                <Category name='In Kind' description={ inKindText }>
+                    <Item
+                        type='inkind'
+                        id='kit-inkind'
+                        name='Jersey/kits'
+                        price={ 0 }
+                    />
+                    <Item
+                        type='inkind'
+                        id='hats-inkind'
+                        name='Hats'
+                        price={ 0 }
+                    />
+                    <Item
+                        type='inkind'
+                        id='swag-inkind'
+                        name='Registration packet swag'
+                        price={ 0 }
+                    />
+                    <Item
+                        type='inkind'
+                        id='bags-inkind'
+                        name='Prize bags'
+                        price={ 0 }
+                    />
+                    <Item
+                        type='inkind'
+                        id='awards-inkind'
+                        name='Main race awards'
+                        price={ 0 }
+                    />
+                    <Item
+                        type='inkind'
+                        id='prizes-inkind'
+                        name='Side event prizes'
+                        price={ 0 }
+                    />
+                </Category>
+            </form>
+            <form action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+                <fieldset>
+                    <legend>Total: ${ total }</legend>
+                    <h2>Sponsor us!</h2>
+                    <input type='hidden' name='business' value='donate@bostonbma.org'/>
+                    <input type='hidden' name='cmd' value='_donations'/>
+                    <input type='hidden' name='item_name' value={ Object.keys(options).join(', ') + ' sponsor' }/>
+                    <input type='hidden' name='item_number' value='NACCC Sponsorship'/>
+                    <input type='hidden' name='amount' value={ total }/>
+                    <input type='hidden' name='currency_code' value='USD'/>
+                    <input type='image' className='paypal-button' name='submit' src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif' alt='Sponsor the NACCC!'/>
+                    <img alt='' width='1' height='1' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif'/>
+                </fieldset>
+            </form>
+        </main>
+    </>
+}
