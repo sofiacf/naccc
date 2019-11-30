@@ -1,5 +1,6 @@
-/* eslint-disable */
 import React, { useEffect, useState } from 'react'
+import { Background } from './Background'
+import hancock from '../images/hancock.png'
 
 interface CategoryProps {
     name: string;
@@ -31,33 +32,40 @@ const inKindText = 'For in-kind donations, reach out and get in touch with us'
 export const Sponsors: React.FC = () => {
     const [total, setTotal] = useState<number>(0)
     const [options, setOptions] = useState<Record<string, number>>({})
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number) => {
+
+    useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
+
+    function onChange(event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number) {
         const newOptions = { ...options }
         if (event.target.checked) newOptions[name] = amount
         else delete newOptions[name]
         setOptions(newOptions)
     }
-    useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
-    const Item: React.FC<ItemProps> = ({ id, name, price, type }) => <>
-        <label htmlFor={ id }>
-            <input type='checkbox'
-                   name={ type }
-                   id={ id }
-                   checked={ options[name] >= 0 }
-                   onChange={ e => onChange(e, name, price) }
-            /> { name } - ${ price }
-        </label>
-        <br/>
-    </>
+    function Item({ id, name, price, type }: ItemProps) {
+        return <>
+            <label htmlFor={ id }>
+                <input
+                    type='checkbox'
+                    name={ type }
+                    id={ id }
+                    checked={ options[name] >= 0 }
+                    onChange={ e => onChange(e, name, price) }
+                /> { name } - ${ price }
+            </label>
+            <br/>
+        </>
+    }
+
     return <>
         <header><h2>Become a sponsor!</h2></header>
+        <Background src={ hancock }/>
         <main>
             <form>
                 <h2>Sponsorship Packages</h2>
-                <p>{ 'We are proud to present an exciting' +
-                ' selection of sponsorship opportunities for your business. The NACCC' +
-                ' has always been a community-based, volunteer-organized event, and' +
-                ' we\'re counting on your support to make this a NACCC to remember.' }</p>
+                <p>{ 'We are proud to present an exciting  selection of sponsorship opportunities for your business. ' +
+                'The NACCC has always been a community-based, volunteer-organized event, and' +
+                ' we\'re counting on your support to make this a NACCC to remember.'
+                }</p>
                 <br/>
                 <Category name='Event' description={ eventText }>
                     <Item
@@ -208,7 +216,7 @@ export const Sponsors: React.FC = () => {
                     />
                 </Category>
             </form>
-            <form action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+            { total > 0 && <form action='https://www.paypal.com/cgi-bin/webscr' method='post'>
                 <fieldset>
                     <legend>Total: ${ total }</legend>
                     <h2>Sponsor us!</h2>
@@ -218,10 +226,16 @@ export const Sponsors: React.FC = () => {
                     <input type='hidden' name='item_number' value='NACCC Sponsorship'/>
                     <input type='hidden' name='amount' value={ total }/>
                     <input type='hidden' name='currency_code' value='USD'/>
-                    <input type='image' className='paypal-button' name='submit' src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif' alt='Sponsor the NACCC!'/>
+                    <input
+                        type='image'
+                        className='paypal-button'
+                        name='submit'
+                        src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif'
+                        alt='Sponsor the NACCC!'
+                    />
                     <img alt='' width='1' height='1' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif'/>
                 </fieldset>
-            </form>
+            </form> }
         </main>
     </>
 }

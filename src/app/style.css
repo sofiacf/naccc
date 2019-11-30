@@ -1,6 +1,5 @@
 body {
     margin: 1rem 2rem;
-    background: linear-gradient(#0c234080, #0c234080), url('./images/hancock.png');
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -11,10 +10,6 @@ body * {
     margin: 0;
 }
 
-abbr {
-    text-decoration: none;
-}
-
 article > p {
     text-align: justify;
 }
@@ -23,32 +18,27 @@ article > p {
     align-items: center;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr;
     grid-template-areas: "logo" "nav" "header" "main";
 }
 
 header {
-    grid-area: header;
     font-weight: bold;
     font-size: 2rem;
-}
-
-h2 {
-    margin: 0;
+    grid-area: header;
 }
 
 .logo {
     grid-area: logo;
 }
 
-.logo img {
+img {
     max-width: 100%;
 }
 
 nav {
     align-self: normal;
-    grid-area: nav;
     font-weight: bold;
+    grid-area: nav;
 }
 
 nav li #sponsor:hover {
@@ -74,7 +64,6 @@ nav ul {
 nav a {
     color: #f4ae1a;
     font-size: 20px;
-    padding: 8px 0;
     text-decoration: none;
 }
 
@@ -84,7 +73,7 @@ main {
 }
 
 form {
-    background-color: #ffffff50;
+    background-color: #ffffff84;
     color: black;
     float: left;
     text-align: left;
@@ -97,8 +86,8 @@ fieldset > .paypal-button {
 
 fieldset > h2 {
     float: left;
-    vertical-align: middle;
 }
+
 legend {
     font-weight: bold;
     display: inline;
@@ -128,4 +117,13 @@ legend {
         text-align: justify;
         width: 100%;
     }
+}
+
+.background {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
 }
