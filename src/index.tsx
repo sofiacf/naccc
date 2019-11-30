@@ -5,4 +5,4 @@ import { App } from './app/components/App'
 import './app/style.css'
 
 ReactDOM.render(<App/>, document.getElementById('root'))
-serviceWorker.unregister()
+serviceWorker.register()

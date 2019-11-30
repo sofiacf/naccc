@@ -80,7 +80,7 @@ form {
     width: 100%;
 }
 
-form p {
+form p, form h2 {
     margin-left: 1rem;
 }
 
