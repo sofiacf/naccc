@@ -1,11 +1,8 @@
-import { render, unmountComponentAtNode } from 'react-dom'
 import React from 'react'
 import { Contact } from '../app/components/Contact'
+import { render } from '@testing-library/react'
 
 it('shows the contact message', () => {
-    const div = document.createElement('div')
-    render(<Contact/>, div)
-    const contact = div.getElementsByClassName('contact')[0]
-    expect(contact.innerHTML).toEqual('<p>Please direct any inquiries to <a href="mailto:boston@naccc2020.com">boston@naccc2020.com</a></p>')
-    unmountComponentAtNode(div)
+    const { getByText } = render(<Contact/>)
+    getByText('Please direct any inquiries to')
 })

@@ -6,9 +6,5 @@ interface Props {
 
 export function Background(props: Props) {
     const { src } = props
-    return <div
-        className='background'
-        style={ { background: `linear-gradient(#0c234080, #0c234080), url(${ src })` } }
-    >
-    </div>
+    return <div className='background' style={ { background: `linear-gradient(#0248, #0248), url(${ src })` } }/>
 }

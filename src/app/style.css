@@ -80,6 +80,10 @@ form {
     width: 100%;
 }
 
+form p {
+    margin-left: 1rem;
+}
+
 fieldset > .paypal-button {
     float: right;
 }

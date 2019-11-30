@@ -61,12 +61,11 @@ export const Sponsors: React.FC = () => {
         <Background src={ hancock }/>
         <main>
             <form>
-                <h2>Sponsorship Packages</h2>
+                <p><h2>Sponsorship Packages</h2></p>
                 <p>{ 'We are proud to present an exciting  selection of sponsorship opportunities for your business. ' +
                 'The NACCC has always been a community-based, volunteer-organized event, and' +
                 ' we\'re counting on your support to make this a NACCC to remember.'
                 }</p>
-                <br/>
                 <Category name='Event' description={ eventText }>
                     <Item
                         type='event'
@@ -186,8 +185,8 @@ export const Sponsors: React.FC = () => {
                     />
                     <Item
                         type='inkind'
-                        id='hats-inkind'
-                        name='Hats'
+                        id='caps-inkind'
+                        name='Caps'
                         price={ 0 }
                     />
                     <Item
