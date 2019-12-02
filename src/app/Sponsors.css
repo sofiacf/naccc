@@ -1,0 +1,20 @@
+.sponsor-form {
+    color: black;
+}
+
+.sponsor-form p, .sponsor-form h2 {
+    margin-left: 1rem;
+}
+
+.paypal-button {
+    float: right;
+}
+
+.sponsor-form fieldset > h2 {
+    float: left;
+}
+
+summary > span {
+    display: inline-block;
+    font-weight: bold;
+}

@@ -1,0 +1,15 @@
+.contact-form input, .contact-form textarea {
+    width: 100%;
+}
+
+.contact-form textarea {
+    height: 100px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.contact-form label {
+    display: block;
+    color: black;
+    font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Background } from './Background'
 import hancock from '../images/hancock.png'
+import '../Sponsors.css'
+import { Background } from './Background'
 
 interface CategoryProps {
     name: string;
@@ -8,9 +9,7 @@ interface CategoryProps {
 }
 const Category: React.FC<CategoryProps> = ({ children, description, name }) => <fieldset>
     <details>
-        <summary>
-            <legend>{ name } Sponsorship</legend>
-        </summary>
+        <summary><span><legend>{ name } Sponsorship</legend></span></summary>
         <p>{ description }</p>
     </details>
     { children }
@@ -35,13 +34,14 @@ export const Sponsors: React.FC = () => {
 
     useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
 
-    function onChange(event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number) {
+    function onChange(event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number): void {
         const newOptions = { ...options }
         if (event.target.checked) newOptions[name] = amount
         else delete newOptions[name]
         setOptions(newOptions)
     }
-    function Item({ id, name, price, type }: ItemProps) {
+
+    function Item({ id, name, price, type }: ItemProps): JSX.Element {
         return <>
             <label htmlFor={ id }>
                 <input
@@ -60,8 +60,8 @@ export const Sponsors: React.FC = () => {
         <header><h2>Become a sponsor!</h2></header>
         <Background src={ hancock }/>
         <main>
-            <form>
-                <h2>Sponsorship Packages</h2>
+            <form className='sponsor-form'>
+                <h2>Sponsorship Opportunities</h2>
                 <p>{ 'We are proud to present an exciting  selection of sponsorship opportunities for your business. ' +
                 'The NACCC has always been a community-based, volunteer-organized event, and' +
                 ' we\'re counting on your support to make this a NACCC to remember.'

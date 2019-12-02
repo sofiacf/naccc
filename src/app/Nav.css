@@ -1,0 +1,31 @@
+nav {
+    align-self: normal;
+    font-weight: bold;
+    grid-area: nav;
+}
+
+nav li #sponsor:hover {
+    color: #bd3039;
+}
+
+nav li #contact:hover {
+    color: #008853;
+}
+
+nav li #merch:hover {
+    color: #0c2340;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+nav a {
+    color: #f4ae1a;
+    font-size: 20px;
+    text-decoration: none;
+}

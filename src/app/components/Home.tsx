@@ -2,9 +2,13 @@ import React from 'react'
 import hancock from '../images/hancock.png'
 import { Background } from './Background'
 
-export const Home: React.FC = () => <main className='home'>
+export const Home: React.FC = () => <>
     <Background src={ hancock }/>
-    <Background src={ hancock }/>
-    <h1>NACCC 2020 BOSTON</h1>
-    <h2>LABOR DAY WEEKEND 2020</h2>
-</main>
+    <header>
+        <h2>NACCC 2020</h2>
+    </header>
+    <main>
+        <h1>LABOR DAY WEEKEND</h1>
+        <h1>BOSTON, MA</h1>
+    </main>
+</>
