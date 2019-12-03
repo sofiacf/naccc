@@ -1,8 +1,9 @@
 import emailjs from 'emailjs-com'
-import React, { createRef, useState } from 'react'
+import React, { createRef, useContext, useState } from 'react'
+import Helmet from 'react-helmet'
 import '../Contact.css'
-import hancock from '../images/hancock.png'
-import { Background } from './Background'
+import cityHall from '../images/city_hall.png'
+import { AppContext } from './App'
 
 interface FieldProps {
     name: string;
@@ -35,13 +36,21 @@ export function Contact(): JSX.Element {
         if (sent || sending) return
         setSending(true)
         const formData = form.current as HTMLFormElement
-        const status = await emailjs.sendForm('naccc', 'contact', formData, 'user_DKDaF6S47jnNpm1TBq3Bt')
-        setSent(status.status === 200)
-        setSending(false)
+        const template = 'contact'
+        const userId = 'user_DKDaF6S47jnNpm1TBq3Bt'
+        const status = await emailjs.sendForm('naccc', template, formData, userId)
+        if(status.status === 200) {
+            setSent(true)
+            setSending(false)
+        }
     }
-
+    const setBackgroundSrc = useContext(AppContext)
+    setBackgroundSrc(cityHall)
     return <>
-        <Background src={ hancock }/>
+        <Helmet>
+            <title>NACCC | Contact</title>
+            <meta name='description' content='Get in touch with the 2020 NACCC planning committee by filling out the form below.'/>
+        </Helmet>
         <header>
             <h2>Get in touch</h2>
         </header>

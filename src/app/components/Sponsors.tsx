@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import hancock from '../images/hancock.png'
+import React, { useContext, useEffect, useState } from 'react'
+import Helmet from 'react-helmet'
+import brick from '../images/brick.png'
 import '../Sponsors.css'
-import { Background } from './Background'
+import { AppContext } from './App'
 
 interface CategoryProps {
     name: string;
@@ -31,7 +32,8 @@ const inKindText = 'For in-kind donations, reach out and get in touch with us'
 export const Sponsors: React.FC = () => {
     const [total, setTotal] = useState<number>(0)
     const [options, setOptions] = useState<Record<string, number>>({})
-
+    const setBackgroundSrc = useContext(AppContext)
+    setBackgroundSrc(brick)
     useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>, name: string, amount: number): void {
@@ -57,8 +59,11 @@ export const Sponsors: React.FC = () => {
     }
 
     return <>
+        <Helmet>
+            <title>NACCC | Sponsorship</title>
+            <meta name='description' content='Become a sponsor of the 2020 North American Cycle Courier Championship! A variety of sponsorship opportunities are available now.'/>
+        </Helmet>
         <header><h2>Become a sponsor!</h2></header>
-        <Background src={ hancock }/>
         <main>
             <form className='sponsor-form'>
                 <h2>Sponsorship Opportunities</h2>
