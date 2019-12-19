@@ -8,6 +8,7 @@ interface CategoryProps {
     name: string;
     description: string;
 }
+
 const Category: React.FC<CategoryProps> = ({ children, description, name }) => <fieldset>
     <details>
         <summary><span><legend>{ name } Sponsorship</legend></span></summary>
@@ -71,6 +72,13 @@ export const Sponsors: React.FC = () => {
                 'The NACCC has always been a community-based, volunteer-organized event, and' +
                 ' we\'re counting on your support to make this a NACCC to remember.'
                 }</p>
+                <p>Check out the sponsorship packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
+                </p>
+                <Category name='Program' description=''>
+                    <Item type='program' id='full' name='Full page ad' price={ 400 }/>
+                    <Item type='program' id='half' name='Half page ad' price={ 250 }/>
+                    <Item type='program' id='quarter' name='Quarter page ad' price={ 150 }/>
+                </Category>
                 <Category name='Event' description={ eventText }>
                     <Item
                         type='event'
