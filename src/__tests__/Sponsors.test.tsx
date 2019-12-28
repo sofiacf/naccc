@@ -1,12 +1,13 @@
+import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 import { Sponsors } from '../app/components/Sponsors'
-import { fireEvent, render } from '@testing-library/react'
 
 it('shows sponsorship options page', () => {
     const { getByText, getByLabelText, getByAltText, queryByAltText } = render(<Sponsors/>)
     getByText('Become a sponsor!')
-    getByText('Event Sponsorship')
+    getByText('Purchase an ad in the event program!')
     getByText('Main Race Sponsorship')
+    getByText('Event Sponsorship')
     getByText('Registration Sponsorship')
     getByText('Merch Sponsorship')
     getByText('In Kind Sponsorship')

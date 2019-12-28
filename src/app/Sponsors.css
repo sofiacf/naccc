@@ -18,3 +18,9 @@ summary > span {
     display: inline-block;
     font-weight: bold;
 }
+
+fieldset {
+    border: 0;
+    margin-bottom: 1rem;
+    background-color: #fff8;
+}

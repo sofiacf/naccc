@@ -9,12 +9,12 @@ interface CategoryProps {
     description: string;
 }
 
-const Category: React.FC<CategoryProps> = ({ children, description, name }) => <fieldset>
+const Category: React.FC<CategoryProps> = props => <fieldset>
     <details>
-        <summary><span><legend>{ name } Sponsorship</legend></span></summary>
-        <p>{ description }</p>
+        <summary><span><legend>{ props.name } Sponsorship</legend></span></summary>
+        <p>{ props.description }</p>
+        { props.children }
     </details>
-    { children }
 </fieldset>
 
 interface ItemProps {
@@ -67,14 +67,20 @@ export const Sponsors: React.FC = () => {
         <header><h2>Become a sponsor!</h2></header>
         <main>
             <form className='sponsor-form'>
-                <h2>Sponsorship Opportunities</h2>
-                <p>{ 'We are proud to present an exciting  selection of sponsorship opportunities for your business. ' +
-                'The NACCC has always been a community-based, volunteer-organized event, and' +
-                ' we\'re counting on your support to make this a NACCC to remember.'
-                }</p>
-                <p>Check out the sponsorship packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
-                </p>
-                <Category name='Program' description=''>
+                <fieldset>
+                    <h2>Sponsorships</h2>
+                    <br/>
+                    <br/>
+                    <p>NACCC 2020 offers a unique selection of sponsorship opportunities for your business.
+                        The NACCC has always been a community-based, volunteer-organized event, and
+                        we rely on your support to make this a NACCC to remember.
+                    </p>
+                    <br/>
+                    <p>Check out the sponsorship
+                        packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
+                    </p>
+                </fieldset>
+                <Category name='Program' description='Purchase an ad in the event program!'>
                     <Item type='program' id='full' name='Full page ad' price={ 400 }/>
                     <Item type='program' id='half' name='Half page ad' price={ 250 }/>
                     <Item type='program' id='quarter' name='Quarter page ad' price={ 150 }/>
@@ -228,9 +234,11 @@ export const Sponsors: React.FC = () => {
                     />
                 </Category>
             </form>
-            { total > 0 && <form action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+            { total > 0 && <form className='sponsor-form' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
                 <fieldset>
-                    <legend>Total: ${ total }</legend>
+                    <legend/>
+                    <ul>{ Object.keys(options).map(option => <li key={ option }>{ option }</li>) }</ul>
+                    Total: ${ total }
                     <h2>Sponsor us!</h2>
                     <input type='hidden' name='business' value='donate@bostonbma.org'/>
                     <input type='hidden' name='cmd' value='_donations'/>

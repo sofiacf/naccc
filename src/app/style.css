@@ -22,7 +22,8 @@ body {
 
 header {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2em;
+    font-variant-caps: all-petite-caps;
     grid-area: header;
 }
 
@@ -54,8 +55,14 @@ main {
 @media (min-width: 600px) {
     #root {
         display: grid;
+        height: 1fr;
+        grid-template-rows: 20vh 1fr 1fr;
         grid-template-columns: 1fr 2fr 2fr;
-        grid-template-areas: 'logo header header' 'nav main main' 'nav main main';
+        grid-template-areas: 'logo header header' 'nav main main' 'none main main';
+    }
+
+    .logo > img {
+        width: 100%;
     }
 
     nav ul {
@@ -75,6 +82,5 @@ main {
 }
 
 form {
-    background-color: #fff8;
     text-align: left;
 }
