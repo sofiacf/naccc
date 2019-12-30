@@ -80,14 +80,11 @@ export const Sponsors: React.FC = () => {
                         packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
                     </p>
                     <br/>
-                    <p>Please do not hesitate to get in touch with any questions or ideas!</p>
-                    <p>Send us an <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.</p>
+                    <p>Please do not hesitate to get in touch with any questions or ideas! Send us
+                        an <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact
+                            form</a>.
+                    </p>
                 </fieldset>
-                <Category name='Program' description='Purchase an ad in the event program!'>
-                    <Item type='program' id='full' name='Full page ad' price={ 400 }/>
-                    <Item type='program' id='half' name='Half page ad' price={ 250 }/>
-                    <Item type='program' id='quarter' name='Quarter page ad' price={ 150 }/>
-                </Category>
                 <Category name='Event' description={ eventText }>
                     <Item
                         type='event'
@@ -198,6 +195,11 @@ export const Sponsors: React.FC = () => {
                         price={ 600 }
                     />
                 </Category>
+                <Category name='Program' description='Purchase an ad in the event program!'>
+                    <Item type='program' id='full' name='Full page ad' price={ 400 }/>
+                    <Item type='program' id='half' name='Half page ad' price={ 250 }/>
+                    <Item type='program' id='quarter' name='Quarter page ad' price={ 150 }/>
+                </Category>
                 <Category name='In Kind' description={ inKindText }>
                     <Item
                         type='inkind'
@@ -239,10 +241,11 @@ export const Sponsors: React.FC = () => {
             </form>
             { total > 0 && <form className='sponsor-form' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
                 <fieldset>
-                    <legend/>
-                    <ul>{ Object.keys(options).map(option => <li key={ option }>{ option }</li>) }</ul>
-                    Total: ${ total }
-                    <h2>Sponsor us!</h2>
+                    <details>
+                        <summary><span><legend>Total:</legend></span></summary>
+                        <ul>{ Object.keys(options).map(option => <li key={ option }>{ option }</li>) }</ul>
+                    </details>
+                    <b>${ total }</b>
                     <input type='hidden' name='business' value='donate@bostonbma.org'/>
                     <input type='hidden' name='cmd' value='_donations'/>
                     <input type='hidden' name='item_name' value={ Object.keys(options).join(', ') + ' sponsor' }/>
