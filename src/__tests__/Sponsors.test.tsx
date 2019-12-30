@@ -17,4 +17,5 @@ it('shows sponsorship options page', () => {
     getByText('Sponsor us!')
     getByText('Total: $144')
     getByAltText('Sponsor the NACCC!')
+    getByText('Please do not hesitate to get in touch with any questions or ideas!')
 })

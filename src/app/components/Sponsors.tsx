@@ -79,6 +79,9 @@ export const Sponsors: React.FC = () => {
                     <p>Check out the sponsorship
                         packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
                     </p>
+                    <br/>
+                    <p>Please do not hesitate to get in touch with any questions or ideas!</p>
+                    <p>Send us an <a href='boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.</p>
                 </fieldset>
                 <Category name='Program' description='Purchase an ad in the event program!'>
                     <Item type='program' id='full' name='Full page ad' price={ 400 }/>
