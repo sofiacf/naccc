@@ -81,7 +81,7 @@ export const Sponsors: React.FC = () => {
                     </p>
                     <br/>
                     <p>Please do not hesitate to get in touch with any questions or ideas!</p>
-                    <p>Send us an <a href='boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.</p>
+                    <p>Send us an <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.</p>
                 </fieldset>
                 <Category name='Program' description='Purchase an ad in the event program!'>
                     <Item type='program' id='full' name='Full page ad' price={ 400 }/>
