@@ -2,10 +2,5 @@
     "name": "NACCC",
     "description": "Official site of Boston NACCC 2020",
     "website": "https://naccc2020.com",
-    "repository": "https://github.com/sofiacf/naccc",
-    "buildpacks": [
-        {
-            "url": "mars/create-react-app"
-        }
-    ]
+    "repository": "https://github.com/sofiacf/naccc"
 }
