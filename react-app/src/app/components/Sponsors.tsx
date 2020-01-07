@@ -52,7 +52,7 @@ export const Sponsors: React.FC = () => {
                     name={ type }
                     id={ id }
                     checked={ options[name] >= 0 }
-                    onChange={ e => onChange(e, name, price) }
+                    onChange={ (e): void => onChange(e, name, price) }
                 /> { name } - ${ price }
             </label>
             <br/>
@@ -80,9 +80,8 @@ export const Sponsors: React.FC = () => {
                         packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
                     </p>
                     <br/>
-                    <p>Please do not hesitate to get in touch with any questions or ideas! Send us
-                        an <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact
-                            form</a>.
+                    <p>Please do not hesitate to get in touch with any questions or ideas! Send us an
+                        <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.
                     </p>
                 </fieldset>
                 <Category name='Event' description={ eventText }>

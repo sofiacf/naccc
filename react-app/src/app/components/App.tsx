@@ -18,7 +18,9 @@ export const AppContext = React.createContext((backgroundSrc: string) => {
 export function App(): JSX.Element {
     const [backgroundSrc, setBackgroundSrc] = useState(hancock)
     const description = 'The North American Cycle Courier Championship is coming to Boston! Labor Day Weekend, 2020.'
-    return <AppContext.Provider value={ backgroundSrc => { setBackgroundSrc(backgroundSrc) } }>
+    return <AppContext.Provider value={ (backgroundSrc): void => {
+        setBackgroundSrc(backgroundSrc)
+    } }>
         <Background src={ backgroundSrc }/>
         <Router>
             <Helmet><title>NACCC 2020</title>
@@ -26,7 +28,7 @@ export function App(): JSX.Element {
             </Helmet>
             <NavLink className='logo' to='/'><img src={ img } alt='NACCC 2020'/></NavLink>
             <Nav/>
-            <Route path='/test' component={ Test } />
+            <Route path='/test' component={ Test }/>
             <Route path='/' component={ Home } exact/>
             <Route path='/sponsorship' component={ Sponsors }/>
             <Route path='/contact' component={ Contact }/>
