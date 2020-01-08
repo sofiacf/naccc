@@ -6,15 +6,15 @@ it('shows the contact message', () => {
     const { getByLabelText, getByText } = render(<Contact/>)
     getByText('Questions? Other stuff? Drop us a line!')
 
-    const email = getByLabelText('Email') as HTMLInputElement
+    const email = getByLabelText('Email*') as HTMLInputElement
     fireEvent.change(email, { target: { value: 'react@naccc2020.com' } })
     expect(email.validity.valid).toBe(true)
 
-    const name = getByLabelText('Name') as HTMLInputElement
+    const name = getByLabelText('Name*') as HTMLInputElement
     fireEvent.change(name, { target: { value: 'Dirk' } })
     expect(name.value).toBe('Dirk')
 
-    const business = getByLabelText('Business (optional)') as HTMLInputElement
+    const business = getByLabelText('Business') as HTMLInputElement
     fireEvent.change(business, { target: { value: 'Acme' } })
     expect(business.value).toBe('Acme')
 

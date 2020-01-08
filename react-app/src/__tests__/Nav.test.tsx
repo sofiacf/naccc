@@ -5,7 +5,7 @@ import { Nav } from '../app/components/Nav'
 
 it('shows nav options', () => {
     const { getByText } = render(<BrowserRouter><Nav/></BrowserRouter>)
-    getByText('SPONSORSHIP')
-    getByText('CONTACT')
-    getByText('MERCH')
+    getByText('SPONSOR US')
+    getByText('CONTACT US')
+    getByText('BUY STUFF')
 })
