@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+form > * :invalid {
+    border: 1px dashed red;
+}
+
 .contact-form textarea {
     height: 100px;
     font-family: inherit;
