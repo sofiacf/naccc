@@ -80,8 +80,8 @@ export const Sponsors: React.FC = () => {
                         packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
                     </p>
                     <br/>
-                    <p>Please do not hesitate to get in touch with any questions or ideas! Send us an
-                        <a href='mailto:boston@naccc2020.com'>email</a> or use the <a href='/contact/'>contact form</a>.
+                    <p>You can always <a href='mailto:boston@naccc2020.com'>email us</a> or use the <a href='/contact/'>
+                        contact form</a> with any questions or ideas.
                     </p>
                 </fieldset>
                 <Category name='Event' description={ eventText }>
