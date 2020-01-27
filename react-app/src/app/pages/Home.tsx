@@ -1,6 +1,6 @@
 import React from 'react'
+import { Background } from '../components/Background'
 import hancock from '../images/hancock.png'
-import { Background } from './Background'
 
 export const Home: React.FC = () => <>
     <Background src={ hancock }/>

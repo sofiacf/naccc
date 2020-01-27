@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
-import { Sponsors } from '../app/components/Sponsors'
+import { Sponsors } from '../app/pages/Sponsors'
 
 it('shows sponsorship options page', () => {
     const { getByText, getByLabelText, getByAltText, queryByAltText } = render(<Sponsors/>)

@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
-import { Contact } from '../app/components/Contact'
+import { Contact } from '../app/pages/Contact'
 
 it('shows the contact message', () => {
     const { getByLabelText, getByText } = render(<Contact/>)

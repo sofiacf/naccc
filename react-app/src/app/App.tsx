@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import Helmet from 'react-helmet'
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
-import hancock from '../images/hancock.png'
-import img from '../images/naccc.png'
-import { Background } from './Background'
-import { Contact } from './Contact'
-import { Home } from './Home'
-import { Nav } from './Nav'
-import { Sponsors } from './Sponsors'
-import { Test } from './Test'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Background } from './components/Background'
+import { Nav } from './components/Nav'
+import { Test } from './components/Test'
+import hancock from './images/hancock.png'
+import { Contact } from './pages/Contact'
+import { Home } from './pages/Home'
+import { Registration } from './pages/Registration'
+import { Sponsors } from './pages/Sponsors'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const AppContext = React.createContext((backgroundSrc: string) => {
@@ -26,12 +26,12 @@ export function App(): JSX.Element {
             <Helmet><title>NACCC 2020</title>
                 <meta name='description' content={ description }/>
             </Helmet>
-            <NavLink className='logo' to='/'><img src={ img } alt='NACCC 2020'/></NavLink>
             <Nav/>
             <Route path='/test' component={ Test }/>
             <Route path='/' component={ Home } exact/>
             <Route path='/sponsorship' component={ Sponsors }/>
             <Route path='/contact' component={ Contact }/>
+            <Route path='/registration' component={ Registration }/>
         </Router>
     </AppContext.Provider>
 }

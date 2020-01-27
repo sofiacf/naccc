@@ -1,19 +1,16 @@
 nav {
     align-self: normal;
+    font-size: 3vw;
     font-weight: bold;
     grid-area: nav;
 }
 
-nav li #sponsor:hover {
+nav li #sponsor:hover, #register:hover {
     color: #bd3039;
 }
 
-nav li #contact:hover {
+nav li #contact:hover, #merch:hover {
     color: #008853;
-}
-
-nav li #merch:hover {
-    color: #0c2340;
 }
 
 nav ul {
@@ -28,4 +25,10 @@ nav a {
     color: #f4ae1a;
     font-size: 1em;
     text-decoration: none;
+}
+
+nav img {
+    max-width: 100%;
+    min-height: 20vh;
+    object-fit: scale-down;
 }

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import { App } from '../app/components/App'
+import { App } from '../app/App'
 
 it('shows the home page', () => {
     const  { getByText } = render(<App/>)

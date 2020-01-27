@@ -1,17 +1,5 @@
-.sponsor-form {
-    color: black;
-}
-
-.sponsor-form p, .sponsor-form h2 {
-    margin-left: 1rem;
-}
-
 .paypal-button {
     float: right;
-}
-
-.sponsor-form fieldset > h2 {
-    float: left;
 }
 
 summary > span {
@@ -19,8 +7,13 @@ summary > span {
     font-weight: bold;
 }
 
-fieldset {
+.sponsor-form {
+    background-color: transparent;
+}
+
+.sponsor-form fieldset {
     border: 0;
     margin-bottom: 1rem;
     background-color: #fff8;
+    text-align: left;
 }

@@ -6,7 +6,7 @@ import { Background } from './Background'
 export const Test: React.FC = () => {
     const [text, setText] = useState('not ready yet')
     useEffect(() => {
-        fetch('http://localhost:8080/test')
+        fetch('http://localhost:8080/registrations/')
             .then(response => response.text())
             .then(setText)
     }, [])
