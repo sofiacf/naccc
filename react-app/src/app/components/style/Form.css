@@ -1,0 +1,51 @@
+.form {
+    color: black;
+    margin-bottom: 1rem;
+    background-color: #fff8;
+}
+
+.form fieldset {
+    border: none;
+}
+
+.form p, .form h2, .form .submit {
+    margin-left: 1rem;
+}
+
+.header > h2, .form > fieldset > div, .form > fieldset > select {
+    float: left;
+    margin-right: 1rem;
+}
+
+.header {
+    border: 0;
+    margin-bottom: 1rem;
+    background-color: #fff8;
+    text-align: left;
+}
+
+.form > input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+div .textarea {
+    width: 100%;
+}
+
+.form textarea {
+    height: 100px;
+    width: 100%;
+}
+
+div .text, div .email {
+    width: calc(50% - 1rem);
+}
+
+.form div > input {
+    width: 100%;
+}
+
+.paypal-button {
+    float: right;
+}

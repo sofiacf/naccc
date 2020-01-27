@@ -159,11 +159,7 @@ module.exports = function (webpackEnv) {
       // require.resolve('webpack/hot/dev-server'),
       isEnvDevelopment &&
       require.resolve('react-dev-utils/webpackHotDevClient'),
-      // Finally, this is your app's code:
       paths.appIndexJs,
-      // We include the app code last so that if there is a runtime error during
-      // initialization, it doesn't blow up the WebpackDevServer client, and
-      // changing JS code would still trigger a refresh.
     ].filter(Boolean),
     output: {
       // The build folder.
@@ -669,5 +665,11 @@ module.exports = function (webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: false,
+    devServer: {
+      inline: true,
+      contentBase: './dist',
+      port: 3000,
+      proxy: { '/**': { target: 'http://localhost:8080', secure: false } }
+    }
   }
 }

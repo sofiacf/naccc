@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Helmet from 'react-helmet'
+import { AppContext } from '../App'
 import brick from '../images/brick.png'
-import '../Sponsors.css'
-import { AppContext } from './App'
+import './style/Sponsors.css'
 
 interface CategoryProps {
     name: string;
@@ -66,24 +66,24 @@ export const Sponsors: React.FC = () => {
         </Helmet>
         <header><h2>Become a sponsor!</h2></header>
         <main>
-            <form className='sponsor-form'>
-                <fieldset>
-                    <h2>Sponsorships</h2>
-                    <br/>
-                    <br/>
-                    <p>NACCC 2020 offers a unique selection of sponsorship opportunities for your business.
-                        The NACCC has always been a community-based, volunteer-organized event, and
-                        we rely on your support to make this a NACCC to remember.
-                    </p>
-                    <br/>
-                    <p>Check out the sponsorship
-                        packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
-                    </p>
-                    <br/>
-                    <p>You can always <a href='mailto:boston@naccc2020.com'>email us</a> or use the <a href='/contact/'>
-                        contact form</a> with any questions or ideas.
-                    </p>
-                </fieldset>
+            <fieldset className='form header'>
+                <h2>Sponsorships</h2>
+                <br/>
+                <br/>
+                <p>NACCC 2020 offers a unique selection of sponsorship opportunities for your business.
+                    The NACCC has always been a community-based, volunteer-organized event, and
+                    we rely on your support to make this a NACCC to remember.
+                </p>
+                <br/>
+                <p>Check out the sponsorship
+                    packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
+                </p>
+                <br/>
+                <p>You can always <a href='mailto:boston@naccc2020.com'>email us</a> or use the <a href='/contact/'>
+                    contact form</a> with any questions or ideas.
+                </p>
+            </fieldset>
+            <form className='sponsor-form form'>
                 <Category name='Event' description={ eventText }>
                     <Item
                         type='event'
@@ -238,13 +238,14 @@ export const Sponsors: React.FC = () => {
                     />
                 </Category>
             </form>
-            { total > 0 && <form className='sponsor-form' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+            { total > 0 &&
+            <form className='sponsor-form form' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
                 <fieldset>
-                    <details>
-                        <summary><span><legend>Total:</legend></span></summary>
-                        <ul>{ Object.keys(options).map(option => <li key={ option }>{ option }</li>) }</ul>
-                    </details>
-                    <b>${ total }</b>
+                    <ol>
+                        <span><legend><h3>Total:</h3></legend></span>
+                        { Object.keys(options).map(option => <li key={ option }>{ option }</li>) }
+                        <b>${ total }</b>
+                    </ol>
                     <input type='hidden' name='business' value='donate@bostonbma.org'/>
                     <input type='hidden' name='cmd' value='_donations'/>
                     <input type='hidden' name='item_name' value={ Object.keys(options).join(', ') + ' sponsor' }/>
