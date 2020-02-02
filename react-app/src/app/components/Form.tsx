@@ -8,6 +8,7 @@ interface FormProps {
     description: string;
     fieldsets: FieldsetProps[];
     name: string;
+    submitText?: string;
 }
 
 export interface FieldsetProps {
@@ -20,7 +21,7 @@ interface InputDataProps {
     type?: string;
     id?: string;
     min?: string | number;
-    max?: string;
+    max?: string | number;
     optional?: boolean;
     options?: string[];
 }
@@ -37,49 +38,45 @@ interface InputProps {
     options?: string[];
 }
 
-function camelCase(string: string) {
-    return string
-        .replace(/\s(.)/g, a => a.toUpperCase())
-        .replace(/^(.)/, b => b.toLowerCase())
-        .trim()
-}
+const camelCase = (string: string): string => string
+    .replace(/\s(.)/g, a => a.toUpperCase())
+    .replace(/^(.)/, b => b.toLowerCase())
+    .replace(/\s+/g, '')
 
 const InputLabel: React.FC<{ label: string; optional?: boolean; id: string }> = props =>
-    <label htmlFor={ props.id }>{ props.label }{ props.optional ? '' : '*' }</label>
+    <label htmlFor={ props.id }>{ props.label }{ props.optional ? '' : '*' }{ props.children }</label>
 
 export const Input: React.FC<InputProps> = props => {
     const id = camelCase(props.id || props.label)
-
-
     return <div className={ props.type }>
-        <InputLabel label={ props.label } optional={ props.optional } id={ id }/>
-        <br/>
-        { switch (props.type) {
-            case 'textarea':
-            <textarea
-            name={ id }
-            id={ id }
-            ref={ props.register({ required: !props.optional }) }
-            />
-        }
-            : (props.type == 'select' && props.options)
-            ? <select
-            name={ id }
-            id={ id }
-            ref={ props.register({ required: !props.optional }) }
-            defaultValue={ '' }
-            >
-            <option value='' defaultValue='' disabled/>
-            { props.options.map(option => <option key={ option } value={ option }>{ option }</option>) }
-            </select>
-            : <input
-            type={ props.type || 'text' }
-            name={ id }
-            id={ id }
-            ref={ props.register({ required: !props.optional }) }
-            min={ props.min }
-            max={ props.max }
-            /> }
+        <InputLabel label={ props.label } optional={ props.optional } id={ id }>
+            <br/>
+            { props.type === 'textarea'
+                ? <textarea
+                    name={ id }
+                    id={ id }
+                    ref={ props.register({ required: !props.optional }) }
+                />
+                : (props.type == 'select' && props.options)
+                    ? <select
+                        name={ id }
+                        id={ id }
+                        ref={ props.register({ required: !props.optional }) }
+                        defaultValue={ '' }
+                    >
+                        <option value='' defaultValue='' disabled/>
+                        { props.options.map(option =>
+                            <option key={ option } value={ option.toUpperCase() }>{ option }</option>) }
+                    </select>
+                    : <input
+                        type={ props.type || 'text' }
+                        name={ id }
+                        id={ id }
+                        ref={ props.register({ required: !props.optional }) }
+                        min={ props.min }
+                        max={ props.max }
+                    /> }
+        </InputLabel>
         { props.errors[props.label] && `${ props.label } is required` }
     </div>
 }
@@ -109,7 +106,7 @@ export const Form: React.FC<FormProps> = props => {
                     options={ field.options }
                 />) }
             </fieldset>) }
-            <input type='submit' className='submit' value='Submit'/>
+            <input type='submit' className='submit' value={ props.submitText || 'Submit' }/>
         </form>
     </>
 }

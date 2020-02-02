@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Data
 @Entity
@@ -19,10 +18,10 @@ public class Registration {
     Long id;
     private String firstName;
     private String lastName;
-    private Date birthday;
+    private String birthdate;
     private String email;
     private String phone;
-    private Boolean isWorkingMessenger;
+    private String isWorkingMessenger;
     private String city;
     private String team;
     private String callsign;
@@ -30,5 +29,8 @@ public class Registration {
     private Boolean wtnb;
     private String pronouns;
     private Integer racerNumber;
-    private Boolean needsHousing;
+    private String needsHousing;
+    private String shirtSize;
+    private String emergencyContactName;
+    private String emergencyContactPhone;
 }

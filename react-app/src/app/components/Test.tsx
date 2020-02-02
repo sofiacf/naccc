@@ -6,13 +6,12 @@ import { Background } from './Background'
 export const Test: React.FC = () => {
     const [text, setText] = useState('not ready yet')
     useEffect(() => {
-        fetch('http://localhost:8080/registrations/')
+        fetch('/registrations/')
             .then(response => response.text())
             .then(setText)
     }, [])
     return <>
         <Background src={ hancock }/>
-        <header>{ text }</header>
         <main>
             <div>{ text }</div>
         </main>

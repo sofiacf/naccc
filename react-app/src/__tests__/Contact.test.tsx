@@ -3,8 +3,9 @@ import React from 'react'
 import { Contact } from '../app/pages/Contact'
 
 it('shows the contact message', () => {
-    const { getByLabelText, getByText } = render(<Contact/>)
-    getByText('Questions? Other stuff? Drop us a line!')
+    const { getByLabelText, getByText, getByDisplayValue } = render(<Contact/>)
+    getByText('Questions? Other stuff?')
+    getByText('Drop us a line! We\'ll see your message and get back to you directly.')
 
     const email = getByLabelText('Email*') as HTMLInputElement
     fireEvent.change(email, { target: { value: 'react@naccc2020.com' } })
@@ -18,5 +19,5 @@ it('shows the contact message', () => {
     fireEvent.change(business, { target: { value: 'Acme' } })
     expect(business.value).toBe('Acme')
 
-    getByLabelText('Send')
+    getByDisplayValue('Submit')
 })

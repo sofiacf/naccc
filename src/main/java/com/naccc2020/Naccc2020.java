@@ -12,12 +12,12 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 public class Naccc2020 {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Naccc2020.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Naccc2020.class, args);
+    }
 
-	@Bean
-	public CorsFilter corsFilter() {
+    @Bean
+    public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
