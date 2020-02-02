@@ -23,9 +23,10 @@ public class GoogleAuthorizeUtil {
     private static String jsonCredentials;
 
     public static Credential authorize() throws IOException, GeneralSecurityException {
+        System.out.println("jsonCredentials = " + jsonCredentials);
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(),
                 new InputStreamReader(new ByteArrayInputStream(jsonCredentials.getBytes())));
-
+        System.out.println("clientSecrets = " + clientSecrets);
         List<String> scopes = ImmutableList.of(SheetsScopes.SPREADSHEETS);
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(

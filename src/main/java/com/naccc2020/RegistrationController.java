@@ -21,6 +21,7 @@ public class RegistrationController {
         try {
             sheetsService = SheetsServiceUtil.getSheetsService();
         } catch (IOException | GeneralSecurityException e) {
+            System.out.println("fyi setting up the sheets service failed");
             e.printStackTrace();
         }
     }
