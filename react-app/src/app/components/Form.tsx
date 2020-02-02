@@ -1,9 +1,9 @@
 import React from 'react'
-import { FormContextValues, useForm } from 'react-hook-form'
+import { FieldName, FieldValues, FormContextValues, NestDataObject, useForm, ValidationOptions } from 'react-hook-form'
 import './style/Form.css'
 
 interface FormProps {
-    onSubmit: (data: any) => void;
+    onSubmit: (data: Record<string, string | number | boolean | null>) => void;
     header: string;
     description: string;
     fieldsets: FieldsetProps[];
@@ -28,8 +28,8 @@ interface InputDataProps {
 
 interface InputProps {
     label: string;
-    register: any;
-    errors: any;
+    register: { <Element>(validationOptions: ValidationOptions): (ref: (Element | null)) => void; <Element>(name: FieldName<FieldValues>, validationOptions?: ValidationOptions): void; <Element>(namesWithValidationOptions: Record<FieldName<FieldValues>, ValidationOptions>): void; <Element>(ref: Element, validationOptions?: ValidationOptions): void; <Element>(refOrValidationOptions: (ValidationOptions | Element | null), validationOptions?: ValidationOptions): (((ref: (Element | null)) => void) | void) };
+    errors: NestDataObject<Record<string, string | null | undefined | never | number>>;
     type?: string;
     id?: string;
     min?: string | number;

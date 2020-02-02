@@ -10,17 +10,21 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.MemoryDataStoreFactory;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.common.collect.ImmutableList;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.List;
 
 public class GoogleAuthorizeUtil {
+    @Value("${credentials}")
+    private static String jsonCredentials;
+
     public static Credential authorize() throws IOException, GeneralSecurityException {
-        InputStream in = GoogleAuthorizeUtil.class.getResourceAsStream("credentials");
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(),
+                new InputStreamReader(new ByteArrayInputStream(jsonCredentials.getBytes())));
 
         List<String> scopes = ImmutableList.of(SheetsScopes.SPREADSHEETS);
 

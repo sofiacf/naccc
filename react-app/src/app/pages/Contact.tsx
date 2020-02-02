@@ -11,7 +11,7 @@ export function Contact(): JSX.Element {
     const [sent, setSent] = useState<boolean>(false)
     const [sending, setSending] = useState<boolean>(false)
 
-    const onSubmit = async () => {
+    const onSubmit = async (): Promise<void> => {
         if (sending) return
         setSending(true)
         const template = 'contact'

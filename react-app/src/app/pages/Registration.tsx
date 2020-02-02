@@ -58,7 +58,7 @@ export const Registration: React.FC = () => {
     const setBackground = useContext(AppContext)
     setBackground(MaxPackage)
     const [submitted, setSubmitted] = useState(false)
-    const onSubmit = (data: any): void => {
+    const onSubmit = (data: Record<string, string | number | boolean | null> ): void => {
         fetch('/registrations/', {
             method: 'POST',
             mode: 'cors',
