@@ -22,22 +22,26 @@ public class GoogleAuthorizeUtil {
     @Value("${credentials}")
     private static String jsonCredentials;
 
+    @Value("${port}")
+    private static int port;
+
     public static Credential authorize() throws IOException, GeneralSecurityException {
         if (jsonCredentials == null) {
             jsonCredentials = System.getenv("CREDENTIALS");
         }
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(),
                 new InputStreamReader(new ByteArrayInputStream(jsonCredentials.getBytes())));
-        System.out.println("clientSecrets = " + clientSecrets);
+
         List<String> scopes = ImmutableList.of(SheetsScopes.SPREADSHEETS);
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 GoogleNetHttpTransport.newTrustedTransport(),
-                JacksonFactory.getDefaultInstance(), clientSecrets, scopes)
+                JacksonFactory.getDefaultInstance(),
+                clientSecrets,
+                scopes)
                 .setDataStoreFactory(new MemoryDataStoreFactory())
                 .setAccessType("offline")
                 .build();
-
-        return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+        return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver.Builder().setHost("https://naccc-staging.herokuapp.com").setPort(port).build()).authorize("user");
     }
 }
