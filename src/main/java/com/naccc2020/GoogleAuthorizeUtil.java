@@ -19,11 +19,13 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 
 public class GoogleAuthorizeUtil {
-    @Value("${CREDENTIALS}")
+    @Value("${credentials}")
     private static String jsonCredentials;
 
     public static Credential authorize() throws IOException, GeneralSecurityException {
-        System.out.println("jsonCredentials = " + jsonCredentials);
+        if (jsonCredentials == null) {
+            jsonCredentials = System.getenv("CREDENTIALS");
+        }
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(),
                 new InputStreamReader(new ByteArrayInputStream(jsonCredentials.getBytes())));
         System.out.println("clientSecrets = " + clientSecrets);
