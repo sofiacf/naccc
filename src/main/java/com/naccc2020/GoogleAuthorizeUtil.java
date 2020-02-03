@@ -19,7 +19,7 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 
 public class GoogleAuthorizeUtil {
-    @Value("${credentials}")
+    @Value("${CREDENTIALS}")
     private static String jsonCredentials;
 
     public static Credential authorize() throws IOException, GeneralSecurityException {
