@@ -26,7 +26,7 @@ public class Registration {
     private String team;
     private String callsign;
     private String gender;
-    private Boolean wtnb;
+    private String wtnb;
     private String pronouns;
     private Integer racerNumber;
     private String needsHousing;

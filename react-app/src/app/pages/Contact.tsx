@@ -36,10 +36,10 @@ export function Contact(): JSX.Element {
                 fieldsets={ [{
                     legend: '',
                     fields: [
-                        { label: 'Name', id: 'from_name' },
-                        { label: 'Business', id: 'business', optional: true },
-                        { label: 'Email', id: 'reply_to', type: 'email' },
-                        { label: 'Message', id: 'message_html', type: 'textarea' }
+                        { label: 'Name', id: 'from_name', width: 'full' },
+                        { label: 'Business', id: 'business', optional: true, width: 'full' },
+                        { label: 'Email', id: 'reply_to', type: 'email', width: 'full' },
+                        { label: 'Message', id: 'message_html', type: 'textarea', width: 'full' }
                     ]
                 }] }/> }
             { sent && <h3>Thanks! We look forward to chatting with you</h3> }

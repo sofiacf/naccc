@@ -8,9 +8,10 @@ const registrationFields: FieldsetProps[] = [
     {
         legend: 'Personal Info',
         fields: [
-            { label: 'First name' },
-            { label: 'Last name' },
-            { label: 'Birthdate', type: 'date', min: '01/01/1920', max: '12/31/2002' }
+            { label: 'First name', width: 'half' },
+            { label: 'Last name', width: 'half' },
+            { label: 'Callsign/alt name', id: 'callsign', optional: true, width: 'half' },
+            { label: 'Birthdate', type: 'date', min: '01/01/1920', max: '12/31/2002', width: 'half' }
         ]
     }, {
         legend: 'Contact Info',
@@ -21,22 +22,24 @@ const registrationFields: FieldsetProps[] = [
     }, {
         legend: 'Rider Info',
         fields: [
+            { label: 'City' },
+            { label: 'Team/company ', id: 'team', optional: true },
             {
                 label: 'Working messenger?',
                 id: 'is working messenger',
                 type: 'select',
                 options: ['Yes', 'Recovered', 'No']
-            },
-            { label: 'City' },
-            { label: 'Team/company ', id: 'team', optional: true },
-            { label: 'Callsign', optional: true }
+            }
         ]
     }, {
         legend: 'Racing Info',
         fields: [
             { label: 'Gender', type: 'select', options: ['female', 'male', 'nonbinary', 'nah'], optional: true },
-            { label: 'WTNB racer?', id: 'wtnb', type: 'checkbox', optional: true },
             { label: 'Pronouns', optional: true },
+            {
+                label: 'WTNB racer?', id: 'wtnb', type: 'select', optional: true, options: ['yep, sign me up for' +
+                ' wtnb prizes', 'idk, figure it out later', 'nope, open or male category only']
+            },
             { label: 'Racer number', type: 'number', min: 0, max: 9999, optional: true }
         ]
     }, {
@@ -58,7 +61,7 @@ export const Registration: React.FC = () => {
     const setBackground = useContext(AppContext)
     setBackground(MaxPackage)
     const [submitted, setSubmitted] = useState(false)
-    const onSubmit = (data: Record<string, string | number | boolean | null> ): void => {
+    const onSubmit = (data: Record<string, string | number | boolean | null>): void => {
         fetch('/registrations/', {
             method: 'POST',
             mode: 'cors',
