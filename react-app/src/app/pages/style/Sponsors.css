@@ -1,0 +1,8 @@
+summary > span {
+    display: inline-block;
+    font-weight: bold;
+}
+
+div .input {
+    padding-bottom: 1px;
+}

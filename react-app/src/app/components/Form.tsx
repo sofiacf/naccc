@@ -24,6 +24,7 @@ interface InputDataProps {
     max?: string | number;
     optional?: boolean;
     options?: string[];
+    width?: string;
 }
 
 interface InputProps {
@@ -36,6 +37,7 @@ interface InputProps {
     max?: string | number;
     optional?: boolean;
     options?: string[];
+    width: string;
 }
 
 const camelCase = (string: string): string => string
@@ -43,22 +45,24 @@ const camelCase = (string: string): string => string
     .replace(/^(.)/, b => b.toLowerCase())
     .replace(/\s+/g, '')
 
-const InputLabel: React.FC<{ label: string; optional?: boolean; id: string }> = props =>
-    <label htmlFor={ props.id }>{ props.label }{ props.optional ? '' : '*' }{ props.children }</label>
+const InputLabel: React.FC<{ label: string; optional?: boolean; id: string; width: string }> = props =>
+    <label htmlFor={ props.id } className={ props.width }>{ props.label }{ props.optional ? '' : '*' }{ props.children }</label>
 
 export const Input: React.FC<InputProps> = props => {
     const id = camelCase(props.id || props.label)
-    return <div className={ props.type }>
-        <InputLabel label={ props.label } optional={ props.optional } id={ id }>
+    return <div className={ `${ props.type } ${ props.width }` }>
+        <InputLabel label={ props.label } optional={ props.optional } id={ id } width={ props.width }>
             <br/>
             { props.type === 'textarea'
                 ? <textarea
+                    className={ props.width }
                     name={ id }
                     id={ id }
                     ref={ props.register({ required: !props.optional }) }
                 />
                 : (props.type == 'select' && props.options)
                     ? <select
+                        className={ props.width }
                         name={ id }
                         id={ id }
                         ref={ props.register({ required: !props.optional }) }
@@ -69,6 +73,7 @@ export const Input: React.FC<InputProps> = props => {
                             <option key={ option } value={ option.toUpperCase() }>{ option }</option>) }
                     </select>
                     : <input
+                        className={ props.width }
                         type={ props.type || 'text' }
                         name={ id }
                         id={ id }
@@ -104,6 +109,7 @@ export const Form: React.FC<FormProps> = props => {
                     type={ field.type || 'text' }
                     optional={ field.optional }
                     options={ field.options }
+                    width={ field.width || 'half' }
                 />) }
             </fieldset>) }
             <input type='submit' className='submit' value={ props.submitText || 'Submit' }/>

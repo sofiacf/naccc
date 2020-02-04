@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Helmet from 'react-helmet'
 import { AppContext } from '../App'
+import '../components/style/Form.css'
 import brick from '../images/brick.png'
 import './style/Sponsors.css'
 
@@ -45,7 +46,7 @@ export const Sponsors: React.FC = () => {
     }
 
     function Item({ id, name, price, type }: ItemProps): JSX.Element {
-        return <>
+        return <div className='item'>
             <label htmlFor={ id }>
                 <input
                     type='checkbox'
@@ -56,7 +57,7 @@ export const Sponsors: React.FC = () => {
                 /> { name } - ${ price }
             </label>
             <br/>
-        </>
+        </div>
     }
 
     return <>

@@ -6,15 +6,36 @@
 
 .form fieldset {
     border: none;
+    padding-right: 0;
+}
+
+fieldset input:not([type=checkbox]):not(.paypal-button), fieldset select {
+    height: 24px;
 }
 
 .form p, .form h2, .form .submit {
     margin-left: 1rem;
 }
 
-.header > h2, .form > fieldset > div, .form > fieldset > select {
+.header > h2 {
     float: left;
     margin-right: 1rem;
+}
+
+div .half {
+    float: left;
+    width: calc(50% - 10px);
+    margin-right: 10px;
+}
+
+div .full {
+    width: calc(100% - 10px);
+    margin-right: 10px;
+}
+
+div .quarter {
+    width: 25%;
+    margin-right: 10px;
 }
 
 .header {
@@ -29,17 +50,9 @@
     margin-bottom: 1rem;
 }
 
-div .textarea {
-    width: 100%;
-}
-
-.form textarea {
+.form textarea, div .textarea {
     height: 100px;
-    width: 100%;
-}
-
-div .text, div .email {
-    width: calc(50% - 1rem);
+    resize: none;
 }
 
 .form div > input {
@@ -48,4 +61,8 @@ div .text, div .email {
 
 .paypal-button {
     float: right;
+}
+
+div .half > *, div .full > * {
+    width: 100%;
 }
