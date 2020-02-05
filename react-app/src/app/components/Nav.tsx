@@ -8,7 +8,7 @@ export const Nav: React.FC = () => <nav title='navigation'>
     <ul>
         <li><NavLink id='sponsor' to='/sponsorship'>SPONSOR US</NavLink></li>
         <li><a id='merch' href='https://bbma.bigcartel.com/'>BUY STUFF</a></li>
-        <li><NavLink id='register' to='/registration'>REGISTER</NavLink></li>
+        <li><NavLink id='register' to='/register'>REGISTER</NavLink></li>
         <li><NavLink id='contact' to='/contact'>CONTACT US</NavLink></li>
     </ul>
 </nav>

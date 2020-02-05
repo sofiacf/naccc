@@ -27,11 +27,11 @@ export function App(): JSX.Element {
                 <meta name='description' content={ description }/>
             </Helmet>
             <Nav/>
-            <Route path='/test' component={ Test }/>
             <Route path='/' component={ Home } exact/>
             <Route path='/sponsorship' component={ Sponsors }/>
             <Route path='/contact' component={ Contact }/>
-            <Route path='/registration' component={ Registration }/>
+            <Route path='/register' component={ Registration }/>
+            <Route path='/test' component={ Test }/>
         </Router>
     </AppContext.Provider>
 }
