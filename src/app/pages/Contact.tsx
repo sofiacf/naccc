@@ -1,27 +1,14 @@
-import emailjs from 'emailjs-com'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../App'
 import { Form } from '../components/Form'
 import { Header } from '../components/Header'
 import { NacccHelmet } from '../components/NacccHelmet'
+import { useEmail } from '../hooks/useEmailJs'
 import cityHall from '../images/city_hall.png'
 import './style/Contact.css'
 
 export function Contact(): JSX.Element {
-    const [sent, setSent] = useState<boolean>(false)
-    const [sending, setSending] = useState<boolean>(false)
-
-    const onSubmit = async (): Promise<void> => {
-        if (sending) return
-        setSending(true)
-        const template = 'contact'
-        const userId = 'user_DKDaF6S47jnNpm1TBq3Bt'
-        const status = await emailjs.sendForm('naccc', template, 'form', userId)
-        if (status.status === 200) {
-            setSent(true)
-            setSending(false)
-        }
-    }
+    const { sent, onSubmit } = useEmail('contact')
     const setBackgroundSrc = useContext(AppContext)
     setBackgroundSrc(cityHall)
     return <>

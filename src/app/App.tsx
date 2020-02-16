@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Background } from './components/Background'
 import { Nav } from './components/Nav'
-import { Test } from './components/Test'
 import hancock from './images/hancock.png'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
@@ -31,7 +30,6 @@ export function App(): JSX.Element {
             <Route path='/sponsorship' component={ Sponsors }/>
             <Route path='/contact' component={ Contact }/>
             <Route path='/register' component={ Registration }/>
-            <Route path='/test' component={ Test }/>
         </Router>
     </AppContext.Provider>
 }

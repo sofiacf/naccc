@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../App'
 import { FieldsetProps, Form } from '../components/Form'
 import { NacccHelmet } from '../components/NacccHelmet'
+import { useEmail } from '../hooks/useEmailJs'
 import MaxPackage from '../images/max-package.png'
 
 const registrationFields: FieldsetProps[] = [
@@ -60,20 +61,12 @@ const registrationFields: FieldsetProps[] = [
 export const Registration: React.FC = () => {
     const setBackground = useContext(AppContext)
     setBackground(MaxPackage)
-    const [submitted, setSubmitted] = useState(false)
-    const onSubmit = (data: Record<string, string | number | boolean | null>): void => {
-        fetch('/registrations/', {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(() => setSubmitted(true))
-    }
+    const { sent, onSubmit } = useEmail('registration')
     return <>
         <NacccHelmet title='Registration' description='Register for the 2020 North American Cycle Courier Championship! Registration is open now through Labor Day 2020. Sign up now for the lowest fees.'/>
         <header><h2>Register!</h2></header>
         <main className='registration'>
-            { !submitted && <Form
+            { !sent && <Form
                 name='registration'
                 onSubmit={ onSubmit }
                 header='Register for NACCC 2020!'
@@ -81,7 +74,7 @@ export const Registration: React.FC = () => {
                 fieldsets={ registrationFields }
                 submitText='continue'
             /> }
-            { submitted &&
+            { sent &&
             <form className='form' action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>
                 <h3>What you get:</h3>
                 <ul>
