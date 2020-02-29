@@ -124,12 +124,6 @@ export const Sponsors: React.FC = () => {
                     />
                     <Item
                         type={ 'event' }
-                        id='wtnb'
-                        name='WTNB race'
-                        price={ 500 }
-                    />
-                    <Item
-                        type={ 'event' }
                         id='alleycat'
                         name='Alleycat'
                         price={ 500 }
