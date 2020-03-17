@@ -70,7 +70,7 @@ export const Registration: React.FC = () => {
                 name='registration'
                 onSubmit={ onSubmit }
                 header='Register for NACCC 2020!'
-                description='Registration for the Boston NACCC costs $40.... for now. Sign up here before the price goes up!'
+                description='Registration for the Boston NACCC costs $60. Sign up here before the price goes up on April 1st!'
                 fieldsets={ registrationFields }
                 submitText='continue'
             /> }
@@ -83,7 +83,7 @@ export const Registration: React.FC = () => {
                     <li>A bag of fun sponsor stuff!</li>
                     <li>A shirt (at registration)!</li>
                     <li>To pay now!</li>
-                    <li><b>It&lsquo;ll be $40.</b></li>
+                    <li><b>It&lsquo;ll be $60.</b></li>
                 </ul>
                 <fieldset>
                     <input type='hidden' name='cmd' value='_s-xclick'/>
