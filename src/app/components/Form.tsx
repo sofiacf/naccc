@@ -25,6 +25,7 @@ interface InputDataProps {
     optional?: boolean;
     options?: string[];
     width?: string;
+    placeholder?: string;
 }
 
 interface InputProps {
@@ -38,6 +39,7 @@ interface InputProps {
     optional?: boolean;
     options?: string[];
     width: string;
+    placeholder?: string;
 }
 
 const camelCase = (string: string): string => string
@@ -59,6 +61,7 @@ export const Input: React.FC<InputProps> = props => {
                     name={ id }
                     id={ id }
                     ref={ props.register({ required: !props.optional }) }
+                    placeholder={ props.placeholder }
                 />
                 : (props.type == 'select' && props.options)
                     ? <select
@@ -80,6 +83,7 @@ export const Input: React.FC<InputProps> = props => {
                         ref={ props.register({ required: !props.optional }) }
                         min={ props.min }
                         max={ props.max }
+                        placeholder={ props.placeholder }
                     /> }
         </InputLabel>
         { props.errors[props.label] && `${ props.label } is required` }
@@ -97,7 +101,7 @@ export const Form: React.FC<FormProps> = props => {
     const { register, handleSubmit, errors }: FormContextValues = useForm()
     return <>
         <FormHeader header={ props.header } description={ props.description }/>
-        <form onSubmit={ handleSubmit(props.onSubmit) } name={ props.name } className='form'>
+        <form onSubmit={ handleSubmit(props.onSubmit) } id={ props.name } name={ props.name } className='form'>
             { props.fieldsets.map(set => <fieldset key={ set.legend }>
                 <span><legend><h3>{ set.legend }</h3></legend></span>
                 { set.fields.map(field => <Input
@@ -110,6 +114,7 @@ export const Form: React.FC<FormProps> = props => {
                     optional={ field.optional }
                     options={ field.options }
                     width={ field.width || 'half' }
+                    placeholder={ field.placeholder }
                 />) }
             </fieldset>) }
             <input type='submit' className='submit' value={ props.submitText || 'Submit' }/>

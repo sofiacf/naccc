@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Helmet from 'react-helmet'
 import { AppContext } from '../App'
+import { Form } from '../components/Form'
 import '../components/style/Form.css'
+import { useEmail } from '../hooks/useEmailJs'
 import brick from '../images/brick.png'
 import './style/Sponsors.css'
 
@@ -34,6 +36,7 @@ const inKindText = 'For in-kind donations, reach out and get in touch with us'
 export const Sponsors: React.FC = () => {
     const [total, setTotal] = useState<number>(0)
     const [options, setOptions] = useState<Record<string, number>>({})
+    const { sent, onSubmit } = useEmail('contact')
     const setBackgroundSrc = useContext(AppContext)
     setBackgroundSrc(brick)
     useEffect(() => setTotal(Object.values(options).reduce((a, b) => a + b, 0)), [options])
@@ -53,8 +56,8 @@ export const Sponsors: React.FC = () => {
                     name={ type }
                     id={ id }
                     checked={ options[name] >= 0 }
-                    onChange={ (e): void => onChange(e, name, price) }
-                /> { name } - ${ price }
+                    onChange={ (e: React.ChangeEvent<HTMLInputElement>): void => onChange(e, name, price) }
+                /> { ` ${ name }${ price > 0 ? ` - $${ price }` : '' } ` }
             </label>
             <br/>
         </div>
@@ -80,7 +83,7 @@ export const Sponsors: React.FC = () => {
                     packet <a href='https://fm.naccc2020.com/NACCC%20Sponsorship%20Packet.pdf' target='_blank' rel='noopener noreferrer'>here</a>!
                 </p>
                 <br/>
-                <p>You can always <a href='mailto:boston@naccc2020.com'>email us</a> or use the <a href='/contact/'>
+                <p>You can always <a href='mailto:boston@naccc2020.com'>email us</a> or use the <a href='/contact'>
                     contact form</a> with any questions or ideas.
                 </p>
             </fieldset>
@@ -198,7 +201,7 @@ export const Sponsors: React.FC = () => {
                     <Item
                         type='inkind'
                         id='kit-inkind'
-                        name='Jersey/kits'
+                        name='Jerseys/kits'
                         price={ 0 }
                     />
                     <Item
@@ -231,8 +234,38 @@ export const Sponsors: React.FC = () => {
                         name='Side event prizes'
                         price={ 0 }
                     />
+                    <Item
+                        type='inkind'
+                        id='other-inkind'
+                        name='Something else'
+                        price={ 0 }
+                    />
                 </Category>
             </form>
+            {
+                !sent && Object.entries(options).length > 0 && total == 0 && <Form
+                    name='contact'
+                    onSubmit={ onSubmit }
+                    header='Donate in-kind'
+                    description={ `Sponsoring${ Object.entries(options).filter(option => option[1] === 0).map(option => ` ${ option[0].toLowerCase() }`) }` }
+                    fieldsets={ [{
+                        legend: '',
+                        fields: [
+                            { label: 'Name', id: 'from_name', width: 'full' },
+                            { label: 'Business', id: 'business', optional: true, width: 'full' },
+                            { label: 'Email', id: 'reply_to', type: 'email', width: 'full' },
+                            {
+                                label: 'Message',
+                                id: 'message_html',
+                                type: 'textarea',
+                                width: 'full',
+                                placeholder: 'What goods will you provide? In what quantity? How will you provide them?'
+                            }
+                        ]
+                    }] }
+                />
+            }
+            { sent && <h3>Thanks so much! We look forward to chatting.</h3> }
             { total > 0 &&
             <form className='sponsor-form form' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
                 <fieldset>
@@ -243,7 +276,7 @@ export const Sponsors: React.FC = () => {
                     </ol>
                     <input type='hidden' name='business' value='donate@bostonbma.org'/>
                     <input type='hidden' name='cmd' value='_donations'/>
-                    <input type='hidden' name='item_name' value={ Object.keys(options).join(', ') + ' sponsor' }/>
+                    <input type='hidden' name='item_name' value={ Object.keys(options).join(' & ') + ' sponsor' }/>
                     <input type='hidden' name='item_number' value='NACCC Sponsorship'/>
                     <input type='hidden' name='amount' value={ total }/>
                     <input type='hidden' name='currency_code' value='USD'/>
