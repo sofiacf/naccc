@@ -70,7 +70,7 @@ export const Registration: React.FC = () => {
                 name='registration'
                 onSubmit={ onSubmit }
                 header='Register for NACCC 2020!'
-                description='Registration for the Boston NACCC costs $60. Sign up here before the price goes up on April 1st!'
+                description='Registration for the Boston NACCC costs $60. Why not sign up right now??'
                 fieldsets={ registrationFields }
                 submitText='continue'
             /> }
