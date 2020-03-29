@@ -62,13 +62,22 @@ export const Registration: React.FC = () => {
     const setBackground = useContext(AppContext)
     setBackground(MaxPackage)
     const { sent, onSubmit } = useEmail('registration')
+    const submitForm = async (data: Record<string, string | number | boolean | null>): Promise<void> => {
+        await onSubmit()
+        await fetch('/registrations/', {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+    }
     return <>
         <NacccHelmet title='Registration' description='Register for the 2020 North American Cycle Courier Championship! Registration is open now through Labor Day 2020. Sign up now for the lowest fees.'/>
         <header><h2>Register!</h2></header>
         <main className='registration'>
             { !sent && <Form
                 name='registration'
-                onSubmit={ onSubmit }
+                onSubmit={ submitForm }
                 header='Register for NACCC 2020!'
                 description='Registration for the Boston NACCC costs $60. Why not sign up right now??'
                 fieldsets={ registrationFields }
