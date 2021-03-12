@@ -39,7 +39,7 @@
     "react": "^16.10.2",
     "react-app-polyfill": "^1.0.5",
     "react-cookie": "^4.0.3",
-    "react-dev-utils": "10.0.0",
+    "react-dev-utils": "11.0.4",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-hook-form": "^4.5.6",
